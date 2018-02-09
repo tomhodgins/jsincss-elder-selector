@@ -5,7 +5,7 @@ export default (selector, sibling, rule) => {
 
   document.querySelectorAll(selector).forEach(tag => {
 
-    const attr = selector.replace(/\W/g, '')
+    const attr = (selector+sibling).replace(/\W/g, '')
     const children = Array.from(tag.parentNode.querySelectorAll(sibling))
     const index = Array.from(tag.parentNode.children).indexOf(tag)
 
