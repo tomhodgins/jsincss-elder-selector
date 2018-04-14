@@ -1,6 +1,6 @@
 {
   "name": "jsincss-elder-selector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An elder selector plugin for jsincss",
   "main": "index.js",
   "scripts": {
