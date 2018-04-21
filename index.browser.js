@@ -1,4 +1,4 @@
-module.exports = (selector, sibling, rule) => {
+function elder(selector, sibling, rule) {
 
   return Array.from(document.querySelectorAll(selector))
 
