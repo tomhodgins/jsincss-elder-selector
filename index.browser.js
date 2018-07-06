@@ -5,9 +5,9 @@ function elder(selector, sibling, rule) {
     .reduce((styles, tag, count) => {
 
       const children = Array.from(tag.parentNode.querySelectorAll(sibling))
-       const index = Array.from(tag.parentNode.children).indexOf(tag)
+      const index = Array.from(tag.parentNode.children).indexOf(tag)
 
-       children
+      children
 
         .filter(tag => children.indexOf(tag) < index)
 
