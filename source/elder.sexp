@@ -9,6 +9,5 @@ mixin('elder', ['selector', 'sibling', 'rule'],
             '    ' + createAttribute(['selector', 'sibling'],
               '    ' + addAttribute('child', 'elder',
                 '    ' + addRule('', '', 'elder', '${rule}',
-                  '    ' + count(
-                    prelude('\n        })\n\n',
-                      returnStyles())))))))))))
+                  prelude('\n        })\n\n',
+                    returnStyles()))))))))))

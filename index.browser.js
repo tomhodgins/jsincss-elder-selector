@@ -17,7 +17,6 @@ function elder(selector, sibling, rule) {
 
           child.setAttribute(`data-elder-${attr}`, count)
           styles += `[data-elder-${attr}="${count}"] { ${rule} }\n`
-          count++
 
         })
 
