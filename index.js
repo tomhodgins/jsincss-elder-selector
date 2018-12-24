@@ -1,27 +1,16 @@
 module.exports = (selector, sibling, rule) => {
-
-  return Array.from(document.querySelectorAll(selector))
-
-    .reduce((styles, tag, count) => {
-
-      const children = Array.from(tag.parentNode.querySelectorAll(sibling))
-      const index = Array.from(tag.parentNode.children).indexOf(tag)
-
-      children
-
-        .filter(tag => children.indexOf(tag) < index)
-
+  const attr = (selector + sibling).replace(/\W/g, '')
+  const result = Array.from(document.querySelectorAll(selector))
+    .reduce((output, tag, count) => {
+      Array.from(tag.parentNode.querySelectorAll(sibling))
+        .filter((child, index, children) => index < children.indexOf(tag))
         .forEach(child => {
-
-          const attr = (selector + sibling).replace(/\W/g, '')
-
-          child.setAttribute(`data-elder-${attr}`, count)
-          styles += `[data-elder-${attr}="${count}"] { ${rule} }\n`
-
+          output.add.push({tag: child, count: count})
+          output.styles.push(`[data-elder-${attr}="${count}"] { ${rule} }`)
         })
-
-      return styles
-
-    }, '')
-
+      return output
+    }, {add: [], remove: [], styles: []})
+  result.add.forEach(tag => tag.tag.setAttribute(`data-elder-${attr}`, tag.count))
+  result.remove.forEach(tag => tag.setAttribute(`data-elder-${attr}`, ''))
+  return result.styles.join('\n')
 }
